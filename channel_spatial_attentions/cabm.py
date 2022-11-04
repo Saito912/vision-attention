@@ -48,7 +48,7 @@ class ChannelGate(nn.Module):
         y_max = self.max_pool(x).view(b, c)
         y_max = self.fc_max(y_max).view(b, c, 1, 1)
 
-        y = self.sigmoid(y_avg + y_avg)
+        y = self.sigmoid(y_avg + y_max)
         return x * y.expand_as(x)
 
 
